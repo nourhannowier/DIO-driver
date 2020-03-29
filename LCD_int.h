@@ -22,7 +22,7 @@
 
 
 /****                  DATA                          *****/
-#define  LCD_DATA             PORTB
+#define  LCD_DATA             PORTC
 
 
 ERROR_enuStatus     LCD_enuInit(void);
