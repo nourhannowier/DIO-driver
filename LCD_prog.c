@@ -248,11 +248,12 @@ ERROR_enuStatus   LCD_enuLatch ( u8 Copy_u8Value )
 ERROR_enuStatus     LCD_enuSendString( u8 * Copy_Pu8String )
 {
 	ERROR_enuStatus  error = ES_NOK ;
-	for( u8 Local_u8Char = 0 ; Copy_Pu8String[Local_u8Char]!='\0' ; Local_u8Char++)
+	while( *Copy_Pu8String !='\0')
 	{
-		LCD_enuSendData(Copy_Pu8String[Local_u8Char]);
+		LCD_enuSendData(*Copy_Pu8String++);
 	}
+
 	error = ES_OK;
-	
+
 	return error ;
 }
