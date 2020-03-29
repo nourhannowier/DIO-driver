@@ -31,7 +31,7 @@ ERROR_enuStatus     LCD_enuSendCMD(  u8 Copy_u8CMD  );
 
 ERROR_enuStatus     LCD_enuSendData( u8 Copy_u8Data ); 
 
-
+ERROR_enuStatus     LCD_enuSendString( u8 * Copy_Pu8String );
 
 
 #endif
