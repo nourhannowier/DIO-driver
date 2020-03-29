@@ -98,7 +98,7 @@ ERROR_enuStatus     LCD_enuInit(void)
 	/*              C   =  0 for Cursor                 */
 	/*              B   =  0 for Blinking OFF           */
 	/****************************************************/
-		LCD_enuSendCMD(0X0C);
+		LCD_enuSendCMD(0XC0);
 		_delay_ms(1);
     /****************************************************/
 	/*                  CLEAR DISPLAY                   */
@@ -111,7 +111,7 @@ ERROR_enuStatus     LCD_enuInit(void)
 	/*          I/D  =  1 for INCREASES                 */
 	/*          S    =  0 for Display not shift         */
 	/****************************************************/	
-		LCD_enuSendCMD(0X06);
+		LCD_enuSendCMD(0X60);
 		_delay_ms(1);
 		
 		error = ES_OK;
@@ -223,6 +223,36 @@ ERROR_enuStatus   LCD_enuLatch ( u8 Copy_u8Value )
 	DIO_enuSetPinValue ( LCD_CONTROL , E_PIN  , LOW );
 	
 	error  =  ES_NOK  ;
+	
+	return error ;
+}
+
+
+/*********************************************************/
+/**************  FUNCTION Implementation  ****************/
+/*********************************************************/
+
+/*********************************************************/
+/* Description   : This function send string             */
+/*                                                       */ 
+/*                 Inputs : string                       */  
+/*                 return : enum                         */  
+/*********************************************************/
+/*********************************************************/
+/* Pre_condition :  function to send char                */
+/*                                                       */ 
+/*                                                       */ 
+/*********************************************************/
+
+
+ERROR_enuStatus     LCD_enuSendString( u8 * Copy_Pu8String )
+{
+	ERROR_enuStatus  error = ES_NOK ;
+	for( u8 Local_u8Char = 0 ; Copy_Pu8String[Local_u8Char]!='\0' ; Local_u8Char++)
+	{
+		LCD_enuSendData(Copy_Pu8String[Local_u8Char]);
+	}
+	error = ES_OK;
 	
 	return error ;
 }
